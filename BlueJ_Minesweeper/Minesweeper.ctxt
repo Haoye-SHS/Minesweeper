@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Minesweeper
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ sweep()
+comment3.params=reset
+comment3.target=void\ setMinefield(boolean)
+comment4.params=
+comment4.target=void\ plant()
+comment5.params=
+comment5.target=void\ revealMines()
+comment6.params=x\ y
+comment6.target=void\ clearAdj0(int,\ int)
+comment7.params=x\ y
+comment7.target=int\ checkAdjMines(int,\ int)
+comment8.params=
+comment8.target=void\ refresh()
+numComments=9

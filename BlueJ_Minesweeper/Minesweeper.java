@@ -1,3 +1,10 @@
+/**
+ * 在这里给出对类 Minesweeper 的描述。
+ * 
+ * @作者（你的名字）
+ * @版本（一个版本号或者一个日期）
+ */
+
 import java.util.Scanner;
 
 //0,        0,          0,              0
@@ -129,9 +136,9 @@ public class Minesweeper {
         for (int x = 0; x < minefield.length; x++) {
             System.out.print(x + 1 + " | ");
             for (int y = 0; y < minefield[x].length; y++) {
-                if (minefield[x][y][0] == 0 && minefield[x][y][2] == 0) System.out.print("# ");
+                if (minefield[x][y][0] == 0 && minefield[x][y][2] == 0) System.out.print("█ ");
                 if (minefield[x][y][0] == 1 && minefield[x][y][1] == 1 && minefield[x][y][2] == 0) {
-                    System.out.print("$ ");
+                    System.out.print("X ");
                     if(gameOver == 0) gameOver = 1;
                 }
                 if (minefield[x][y][0] == 1 && minefield[x][y][2] == 0 && checkAdjMines(x, y) == 0)
