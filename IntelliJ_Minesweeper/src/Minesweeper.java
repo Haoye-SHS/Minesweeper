@@ -130,14 +130,13 @@ public class Minesweeper {
 
     public static void checkWin() {
         int opened = 0;
-        int flagged = 0;
         for (int x = 0; x < minefield.length; x++) {
             for (int y = 0; y < minefield[x].length; y++) {
                 if (minefield[x][y][0] == 1 && minefield[x][y][1] == 0) opened++;
-                if (minefield[x][y][1] == 1 && minefield[x][y][2] == 1) flagged++;
             }
         }
-        if (opened == 71 || flagged == 10) {
+
+        if (opened == 71) {
             revealMines();
             gameOver = 2;
         }
