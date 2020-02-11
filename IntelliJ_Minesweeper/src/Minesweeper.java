@@ -13,6 +13,7 @@ public class Minesweeper {
      */
     private static int[][][] minefield;
     private static Scanner keyboardIn;
+    private static String coordinate = "";
     /*
     gameOver:
     0 = game in progress;
@@ -66,9 +67,8 @@ public class Minesweeper {
     }
 
     public static void sweep() {
-        String coordinate = "";
-
         if (gameStarted != 1) {
+            coordinate = "";
             while (coordinate.length() < 2 || Integer.parseInt(coordinate.charAt(1) + "") - 1 > 8 || coordinate.charAt(0) - 'A' > 8) {
                 System.out.println("Please enter a valid 2 digit coordinate (Append F to flag):");
                 coordinate = keyboardIn.nextLine();
@@ -79,12 +79,13 @@ public class Minesweeper {
         } else gameStarted = 2;
 
         if (gameStarted != 0) {
-            if (coordinate.length() == 3 && coordinate.charAt(2) == 'F') minefield[selectX][selectY][2] = 1;
-            if (minefield[selectX][selectY][0] == 0 && minefield[selectX][selectY][1] == 0 && minefield[selectX][selectY][2] != 1) {
+            if (coordinate.length() == 3 && coordinate.charAt(2) == 'F' && minefield[selectX][selectY][2] == 0) minefield[selectX][selectY][2] = 1;
+            else if (coordinate.length() == 3 && coordinate.charAt(2) == 'F' && minefield[selectX][selectY][2] == 1) minefield[selectX][selectY][2] = 0;
+
+            if (coordinate.length() == 2 && minefield[selectX][selectY][0] == 0 && minefield[selectX][selectY][1] == 0 && minefield[selectX][selectY][2] != 1) {
                 minefield[selectX][selectY][0] = 1;
                 clearAdj0(selectX, selectY);
-            }
-            if (minefield[selectX][selectY][0] == 0 && minefield[selectX][selectY][1] == 1 && minefield[selectX][selectY][2] != 1) {
+            } else if (coordinate.length() == 2 && minefield[selectX][selectY][0] == 0 && minefield[selectX][selectY][1] == 1 && minefield[selectX][selectY][2] != 1) {
                 minefield[selectX][selectY][0] = 1;
                 revealMines();
                 gameOver = 1;
@@ -172,7 +173,7 @@ public class Minesweeper {
             }
             System.out.println("|");
         }
-        System.out.println("  | A B C D E F G H I |");
+        System.out.println("    A B C D E F G H I  ");
 
         if (gameOver == 1) System.out.println("You lose fool!");
         if (gameOver == 2) System.out.println("You won!");
