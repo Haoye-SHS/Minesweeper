@@ -2,7 +2,7 @@
  * Represents a playable minesweeper game.
  *
  * @author Haoye Tang and Daniel Zhang
- * @version 1581704594
+ * @version 1581707998
  */
 
 import java.util.Scanner;
@@ -52,7 +52,7 @@ public class Minesweeper {
     }
 
     /**
-     * Creates a new minefield by clearing all bombs and flipping each square
+     * Creates a new minefield without any bomb and every squre unrevealed
      */
     public void setMinefield() {
         for (int x = 0; x < minefield.length; x++) {
@@ -81,7 +81,7 @@ public class Minesweeper {
     }
 
     /**
-     * Takes input and flips the selected square.
+     * Takes input and flips the selected square
      */
     public void sweep() {
         if (gameStarted != 1) {
@@ -113,6 +113,9 @@ public class Minesweeper {
         }
     }
 
+    /**
+     * After the player loses, reveal every bomb to make them sad
+     */
     public void revealMines() {
         for (int x = 0; x < minefield.length; x++) {
             for (int y = 0; y < minefield[x].length; y++) {
@@ -123,7 +126,7 @@ public class Minesweeper {
 
     /**
      * Reveals the squares around a selected square if there are no bombs
-     * around the surrounding squares.
+     * around the surrounding squares. Continues until there are bombs adjacent
      * @param x the x coordinate of the square being checked
      * @param y the y coordinate of the square being checked
      */
